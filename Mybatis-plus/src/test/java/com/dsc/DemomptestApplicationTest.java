@@ -49,5 +49,13 @@ class DemomptestApplicationTest {
         System.out.println(users);
     }
 
+    //根据id删除
+@Test
+    public void testDeleteId(){
+
+        int rows = userMapper.deleteById(1);
+        System.out.println(rows);
+    }
+
 
 }
