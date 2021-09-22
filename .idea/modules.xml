@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Mybatis-plus/Mybatis-plus.iml" filepath="$PROJECT_DIR$/Mybatis-plus/Mybatis-plus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/common/common.iml" filepath="$PROJECT_DIR$/yygh_parent/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/hospital-manage/hospital-manage.iml" filepath="$PROJECT_DIR$/yygh_parent/hospital-manage/hospital-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/medicalport.iml" filepath="$PROJECT_DIR$/.idea/medicalport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/model/model.iml" filepath="$PROJECT_DIR$/yygh_parent/model/model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/servcie_gateway/servcie_gateway.iml" filepath="$PROJECT_DIR$/yygh_parent/servcie_gateway/servcie_gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service_client/service_client.iml" filepath="$PROJECT_DIR$/yygh_parent/service_client/service_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service_util/service_util.iml" filepath="$PROJECT_DIR$/yygh_parent/service_util/service_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/yygh_parent.iml" filepath="$PROJECT_DIR$/yygh_parent/yygh_parent.iml" />
+    </modules>
+  </component>
+</project>
