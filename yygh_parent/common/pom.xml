@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>common</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>common_util</module>
+        <module>rabbit_uti</module>
+        <module>service_util</module>
+    </modules>
 
     <dependencies>
         <dependency>
