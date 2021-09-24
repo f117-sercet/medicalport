@@ -11,9 +11,6 @@
 
     <artifactId>service_util</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>service_user_client</module>
-    </modules>
 
 
     <properties>

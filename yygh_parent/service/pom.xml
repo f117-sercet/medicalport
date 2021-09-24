@@ -10,6 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>service</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>service_cnm</module>
+        <module>service_hosp</module>
+        <module>service_msn</module>
+        <module>service_order</module>
+        <module>service_oss</module>
+        <module>service_statistics</module>
+        <module>service_task</module>
+        <module>service_user</module>
+    </modules>
 
     <dependencies>
         <dependency>

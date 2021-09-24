@@ -13,8 +13,16 @@
       <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service.iml" />
       <module fileurl="file://$PROJECT_DIR$/yygh_parent/service_client/service_client.iml" filepath="$PROJECT_DIR$/yygh_parent/service_client/service_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/yygh_parent/service_client/service_cmn_client/service_cmn_client.iml" filepath="$PROJECT_DIR$/yygh_parent/service_client/service_cmn_client/service_cmn_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service_cnm/service_cnm.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service_cnm/service_cnm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service_hosp/service_hosp.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service_hosp/service_hosp.iml" />
       <module fileurl="file://$PROJECT_DIR$/yygh_parent/service_client/service_hosp_client/service_hosp_client.iml" filepath="$PROJECT_DIR$/yygh_parent/service_client/service_hosp_client/service_hosp_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service_msn/service_msn.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service_msn/service_msn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service_order/service_order.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service_order/service_order.iml" />
       <module fileurl="file://$PROJECT_DIR$/yygh_parent/service_client/service_order_client/service_order_client.iml" filepath="$PROJECT_DIR$/yygh_parent/service_client/service_order_client/service_order_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service_oss/service_oss.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service_oss/service_oss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service_statistics/service_statistics.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service_statistics/service_statistics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service_task/service_task.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service_task/service_task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yygh_parent/service/service_user/service_user.iml" filepath="$PROJECT_DIR$/yygh_parent/service/service_user/service_user.iml" />
       <module fileurl="file://$PROJECT_DIR$/yygh_parent/service_client/service_user_client/service_user_client.iml" filepath="$PROJECT_DIR$/yygh_parent/service_client/service_user_client/service_user_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/yygh_parent/common/service_util/service_util.iml" filepath="$PROJECT_DIR$/yygh_parent/common/service_util/service_util.iml" />
       <module fileurl="file://$PROJECT_DIR$/yygh_parent/yygh_parent.iml" filepath="$PROJECT_DIR$/yygh_parent/yygh_parent.iml" />
