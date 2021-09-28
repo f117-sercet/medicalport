@@ -15,7 +15,6 @@
         <module>servcie_gateway</module>
         <module>service</module>
         <module>hospital-manage</module>
-        <module>service/untitled</module>
     </modules>
     <parent>
     <groupId>org.springframework.boot</groupId>
