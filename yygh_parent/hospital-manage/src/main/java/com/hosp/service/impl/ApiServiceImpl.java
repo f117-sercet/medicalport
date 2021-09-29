@@ -90,6 +90,11 @@ public class ApiServiceImpl implements ApiService {
 
     @Override
     public boolean saveHospital(String data) {
+
+        JSONObject jsonObject = JSONObject.parseObject(data);
+        Map<String,Object> paramMap = new HashMap<>();
+
+
         return false;
     }
 
