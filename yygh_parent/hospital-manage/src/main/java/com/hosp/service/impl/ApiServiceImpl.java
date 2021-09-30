@@ -93,6 +93,16 @@ public class ApiServiceImpl implements ApiService {
 
         JSONObject jsonObject = JSONObject.parseObject(data);
         Map<String,Object> paramMap = new HashMap<>();
+        paramMap.put("hscode",this.getHoscode());
+        paramMap.put("hosname",jsonObject.getString("hosname"));
+        paramMap.put("hostype",jsonObject.getString("hostype"));
+        paramMap.put("provinceCode",jsonObject.getString("provinceCode"));
+        paramMap.put("cityCode",jsonObject.getString("cityCode"));
+        paramMap.put("districtCode",jsonObject.getString("districtCode"));
+        paramMap.put("address",jsonObject.getString("address"));
+        paramMap.put("intro",jsonObject.getString("intro"));
+        paramMap.put("route",jsonObject.getString("route"));
+
 
 
         return false;
