@@ -1,12 +1,14 @@
 package com.hosp.service.impl;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hosp.mapper.HospitalSetMapper;
 import com.hosp.mapper.ScheduleMapper;
 import com.hosp.model.HospitalSet;
 import com.hosp.service.ApiService;
 
+import com.hosp.utils.HospitalException;
 import com.hosp.utils.HttpRequestHelper;
 import com.hosp.utils.MD5;
 import lombok.extern.slf4j.Slf4j;
@@ -106,17 +108,77 @@ public class ApiServiceImpl implements ApiService {
         //图片
         paramMap.put("logoData", jsonObject.getString("logoData"));
 
-        return false;
+        JSONObject bookingRule = jsonObject.getJSONObject("bookingRule");
+        paramMap.put("bookingRule",bookingRule.toJSONString());
+
+        paramMap.put("timestamp",HttpRequestHelper.getTimestamp());
+        paramMap.put("sign",MD5.encrypt(this.getSignKey()));
+
+        JSONObject respone =
+                HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/saveHospital");
+        System.out.println(respone.toJSONString());
+
+        if(null != respone && 200 == respone.getIntValue("code")) {
+            return true;
+        } else {
+            throw new HospitalException(respone.getString("message"), 201);
+        }
     }
 
     @Override
     public Map<String, Object> findDepartment(int pageNum, int pageSize) {
-        return null;
-    }
+        Map<String, Object> result = new HashMap();
 
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("hoscode",this.getHoscode());
+        //paramMap.put("depcode",depcode);
+        paramMap.put("page",pageNum);
+        paramMap.put("limit",pageSize);
+        paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
+        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
+        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/department/list");
+        if(null != respone && 200 == respone.getIntValue("code")) {
+            JSONObject jsonObject = respone.getJSONObject("data");
+
+            result.put("total", jsonObject.getLong("totalElements"));
+            result.put("pageNum", pageNum);
+            result.put("list", jsonObject.getJSONArray("content"));
+        } else {
+            throw new HospitalException(respone.getString("message"), 201);
+        }
+        return result;
+    }
     @Override
     public boolean saveDepartment(String data) {
-        return false;
+        JSONArray jsonArray = new JSONArray();
+        if (!data.startsWith("[")){
+            JSONObject jsonObject = JSONObject.parseObject(data);
+            jsonArray.add(jsonObject);
+        }else {
+            jsonArray = JSONArray.parseArray(data);
+        }
+        for (int i = 0,len=jsonArray.size() ; i <len ; i++) {
+           JSONObject jsonObject =jsonArray.getJSONObject(i);
+           Map<String,Object> paramMap = new HashMap<>();
+            paramMap.put("hoscode",this.getHoscode());
+            paramMap.put("depcode",jsonObject.getString("depcode"));
+            paramMap.put("depname",jsonObject.getString("depname"));
+            paramMap.put("intro",jsonObject.getString("intro"));
+            paramMap.put("bigcode", jsonObject.getString("bigcode"));
+            paramMap.put("bigname",jsonObject.getString("bigname"));
+
+            paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
+            paramMap.put("sign",MD5.encrypt(this.getSignKey()));
+            JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/saveDepartment");
+
+            System.out.println(respone.toJSONString());
+
+
+        if(null == respone || 200 != respone.getIntValue("code")) {
+            throw new HospitalException(respone.getString("message"), 201);
+        }
+    }
+        return true;
     }
 
     @Override
