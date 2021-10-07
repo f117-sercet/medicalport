@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -106,6 +107,19 @@ public class hospitalServiceImpl implements HospitalService {
     @Override
     public void updatePayStatus(Map<String, Object> paramMap) {
 
+        String hosode = (String) paramMap.get("hoscode");
+        String hosRecordId = (String) paramMap.get("hosRecord");
+        OrderInfo orderInfo = orderInfoMapper.selectById(hosRecordId);
+
+        if (null == orderInfo){
+
+            throw new HospitalException(ResultCodeEnum.DATA_ERROR);
+        }
+        // 已支付
+
+        orderInfo.setOrderStatus(1);
+        orderInfo.setPayTime(new Date());
+        orderInfoMapper.updateById(orderInfo);
     }
 
     @Override
