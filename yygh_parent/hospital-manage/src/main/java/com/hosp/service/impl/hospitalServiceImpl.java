@@ -125,5 +125,31 @@ public class hospitalServiceImpl implements HospitalService {
     @Override
     public void updateCancelStatus(Map<String, Object> paramMap) {
 
+        String hoscode = (String)paramMap.get("hoscode");
+        String hosRecordId = (String)paramMap.get("hosRecordId");
+
+        OrderInfo orderInfo = orderInfoMapper.selectById(hosRecordId);
+        if(null == orderInfo) {
+            throw new HospitalException(ResultCodeEnum.DATA_ERROR);
+        }
+        //已取消
+        orderInfo.setOrderStatus(-1);
+        orderInfo.setQuitTime(new Date());
+        orderInfoMapper.updateById(orderInfo);
     }
+
+    private Schedule getSchedule(String frontSchId) {
+        return hospitalMapper.selectById(frontSchId);
+    }
+
+    /**
+     * 医院处理就诊人信息
+     * @param patient
+     */
+    private Long savePatient(Patient patient) {
+        // 业务：略
+        return 1L;
+    }
+
+
 }
