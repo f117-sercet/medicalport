@@ -55,11 +55,11 @@ public class hospitalServiceImpl implements HospitalService {
         !schedule.getDepcode().equals(depcode)||
                 schedule.getAmount().equals(amount)){
 
-            throw  new HospitalException(ResultCodeEnum.DATA_ERROR)
+            throw  new HospitalException(ResultCodeEnum.DATA_ERROR);
         }
 
         //就诊人信息
-        Patient patient = JSONObject.parseObject(JSONObject.toJSONString(paramMap),Patient.class)
+        Patient patient = JSONObject.parseObject(JSONObject.toJSONString(paramMap),Patient.class);
         log.info(JSONObject.toJSONString(patient));
 
         //处理就诊业务
