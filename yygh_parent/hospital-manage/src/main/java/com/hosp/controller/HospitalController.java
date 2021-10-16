@@ -5,6 +5,7 @@ import com.hosp.service.HospitalService;
 import com.hosp.utils.HospitalException;
 import com.hosp.utils.HttpRequestHelper;
 import com.hosp.utils.Result;
+import com.hosp.utils.ResultCodeEnum;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,4 +50,49 @@ public class HospitalController {
         }
     }
 
+    /**
+     * 更新支付状态
+     * @param request
+     * @param response
+     * @return
+     */
+    @PostMapping("/order/updatePayStatus")
+    public Result updatePayStatus(HttpServletRequest request, HttpServletResponse response) {
+        try {
+
+            Map<String,Object> paramMap =HttpRequestHelper.switchMap(request.getParameterMap());
+           if (!HttpRequestHelper.isSignEquals(paramMap,apiService.getSignKey())){
+
+               throw new HospitalException(ResultCodeEnum.SIGN_ERROR);
+
+           }
+            hospitalService.updatePayStatus(paramMap);
+            return Result.ok();
+        }catch (Exception e){
+             return Result.fail().message(e.getMessage());
+        }
+
+        }
+
+    /**
+     * 更新取消预约状态
+     * @param request
+     * @param response
+     * @return
+     */
+    @PostMapping("/order/updateCancelStatus")
+    public Result updateCancelStatus(HttpServletRequest request, HttpServletResponse response){
+
+        try {
+            Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
+//			if(!HttpRequestHelper.isSignEquals(paramMap, apiService.getSignKey())) {
+//				throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+//			}
+
+            hospitalService.updateCancelStatus(paramMap);
+            return Result.ok();
+        } catch (HospitalException e) {
+            return Result.fail().message(e.getMessage());
+        }
+    }
 }
