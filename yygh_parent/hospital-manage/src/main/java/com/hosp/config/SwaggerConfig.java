@@ -27,7 +27,7 @@ public class SwaggerConfig {
                 .apiInfo(webApiInfo())
                 .select()
                 //过滤掉admin路径下的所有页面
-                .paths(Predicates.and(PathSelectors.regex("/P2P/.*")))
+               // .paths(Predicates.and(PathSelectors.regex("/P2P/.*")))
                 //过滤掉所有error或error.*页面
                 //.paths(Predicates.not(PathSelectors.regex("/error.*")))
                 .build();

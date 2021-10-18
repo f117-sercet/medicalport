@@ -7,6 +7,7 @@ import com.hosp.utils.HttpRequestHelper;
 import com.hosp.utils.Result;
 import com.hosp.utils.ResultCodeEnum;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ import java.util.Map;
  * @author dc
  * 医院
  */
-@Api(tags = "医院管理接口")
+@Api(tags = "医院控制类")
 @RestController
 public class HospitalController {
 
@@ -35,6 +36,7 @@ public class HospitalController {
      * @param request
      * @return
      */
+    @ApiOperation("提交订单")
     @PostMapping("/order/submitOrder")
     public Result AgreeAccountLendProject(HttpServletRequest request, HttpServletResponse response) {
         try {

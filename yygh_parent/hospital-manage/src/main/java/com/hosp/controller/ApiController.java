@@ -5,6 +5,9 @@ import com.hosp.model.HospitalSet;
 import com.hosp.service.ApiService;
 import com.hosp.utils.HospitalException;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 import org.hibernate.validator.internal.metadata.aggregated.rule.OverridingMethodMustNotAlterParameterConstraints;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author dsc
  * APIcontroller
  */
-@Api(tags = "医院管理接口")
+@Api(tags ="医院Api接口")
 @Controller
 @RequestMapping
 public class ApiController extends BaseController {
@@ -32,7 +35,7 @@ public class ApiController extends BaseController {
 
     @Autowired
     private HospitalSetMapper hospitalSetMapper;
-
+    @ApiOperation("获取医院校验码")
     @RequestMapping("/hospitalSet/index")
     public String getHospitalSet(ModelMap model, RedirectAttributes redirectAttributes) {
 
