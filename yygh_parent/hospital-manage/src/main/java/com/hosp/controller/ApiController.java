@@ -58,7 +58,7 @@ public class ApiController extends BaseController {
             HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
             if (null == hospitalSet || StringUtils.isEmpty(hospitalSet.getHoscode()) || StringUtils.isEmpty(hospitalSet.getSignKey())) {
                 this.failureMessage("先设置医院code与签名key", redirectAttributes);
-                return "redirect:/hospitalSet/index";
+                return "redirect:hospitalSet/index";
             }
 
             model.addAttribute("hospital", apiService.getHospital());
@@ -73,7 +73,7 @@ public class ApiController extends BaseController {
     @RequestMapping(value = "/hospital/create")
     public String createHospital(ModelMap model) {
 
-        return "hosptial/create";
+        return "hospital/create";
     }
 
     @RequestMapping(value = "hospital/save", method = RequestMethod.POST)
@@ -145,7 +145,7 @@ public class ApiController extends BaseController {
         } catch (Exception e) {
             this.failureMessage("数据异常", request);
         }
-        return "schedule/index";
+        return "redirect:schedule/index";
     }
 
     @RequestMapping(value = "/sehedule/create")
