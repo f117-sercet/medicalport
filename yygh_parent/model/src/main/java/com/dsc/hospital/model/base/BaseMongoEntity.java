@@ -1,4 +1,4 @@
-package com.dsc.hospital.model.user;
+package com.dsc.hospital.model.base;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,10 +10,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Mongo类
- * @author dsc
- */
 @Data
 public class BaseMongoEntity implements Serializable {
 
@@ -33,5 +29,4 @@ public class BaseMongoEntity implements Serializable {
     @ApiModelProperty(value = "其他参数")
     @Transient //被该注解标注的，将不会被录入到数据库中。只作为普通的javaBean属性
     private Map<String,Object> param = new HashMap<>();
-
 }

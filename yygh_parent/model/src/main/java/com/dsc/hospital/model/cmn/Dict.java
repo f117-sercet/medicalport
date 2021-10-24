@@ -1,26 +1,32 @@
-package com.dsc.hospital.base;
+package com.dsc.hospital.model.cmn;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * <p>
+ * Dict
+ * </p>
+ *
  * @author qy
  */
 @Data
-public class BaseEntity implements Serializable {
+@ApiModel(description = "数据字典")
+@TableName("dict")
+public class Dict {
+
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "id")
-    @TableId(type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "创建时间")
@@ -40,5 +46,25 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty(value = "其他参数")
     @TableField(exist = false)
     private Map<String,Object> param = new HashMap<>();
+
+    @ApiModelProperty(value = "上级id")
+    @TableField("parent_id")
+    private Long parentId;
+
+    @ApiModelProperty(value = "名称")
+    @TableField("name")
+    private String name;
+
+    @ApiModelProperty(value = "值")
+    @TableField("value")
+    private String value;
+
+    @ApiModelProperty(value = "编码")
+    @TableField("dict_code")
+    private String dictCode;
+
+    @ApiModelProperty(value = "是否包含子节点")
+    @TableField(exist = false)
+    private boolean hasChildren;
 
 }
