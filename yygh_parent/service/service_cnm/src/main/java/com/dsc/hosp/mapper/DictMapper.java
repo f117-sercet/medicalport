@@ -1,6 +1,6 @@
 package com.dsc.hosp.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou .mybatisplus.core.mapper.BaseMapper;
 import com.dsc.hospital.model.cmn.Dict;
 
 /**
