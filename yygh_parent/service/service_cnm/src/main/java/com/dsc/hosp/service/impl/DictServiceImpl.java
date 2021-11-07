@@ -3,11 +3,13 @@ package com.dsc.hosp.service.impl;
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.dsc.hosp.listener.DictListener;
 import com.dsc.hosp.mapper.DictMapper;
 import com.dsc.hosp.service.DictService;
 import com.dsc.hospital.model.cmn.Dict;
 import com.dsc.hospital.vo.cmn.DictEeVo;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -91,10 +93,22 @@ public class DictServiceImpl extends ServiceImpl<DictMapper,Dict> implements Dic
         }
     }
 
+    /**
+     * 导入数据字典
+     * @param file
+     */
+    @CacheEvict
     @Override
     public void importDictData(MultipartFile file) {
 
+        try {
+            EasyExcel.read(file.getInputStream(),DictEeVo.class,new DictListener(baseMapper)).sheet().doRead();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
     }
+
 
     @Override
     public String getDictName(String dictCode, String value) {
