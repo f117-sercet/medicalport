@@ -8,10 +8,12 @@ import com.dsc.hosp.mapper.DictMapper;
 import com.dsc.hosp.service.DictService;
 import com.dsc.hospital.model.cmn.Dict;
 import com.dsc.hospital.vo.cmn.DictEeVo;
+import com.sun.org.apache.xml.internal.dtm.ref.DTMChildIterNodeList;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -112,7 +114,34 @@ public class DictServiceImpl extends ServiceImpl<DictMapper,Dict> implements Dic
 
     @Override
     public String getDictName(String dictCode, String value) {
-        return null;
+
+        //如果dictCode为空，直接根据Value
+        if (StringUtils.isEmpty(dictCode)) {
+
+            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+            wrapper.eq("value", value);
+            Dict dict = baseMapper.selectOne(wrapper);
+            return dict.getName();
+        } else {
+            //如果dictCode不为空，更具dictCode和value查询
+            Dict code = this.getDictByDictCode(dictCode);
+            Long parent_Id = code.getId();
+            //根据parent_id和value进行查询
+            Dict finalDict = baseMapper.selectOne(new QueryWrapper<Dict>()
+                    .eq("parent_id", parent_Id)
+                    .eq("value", value));
+
+
+        return finalDict.getName();
+    }
+
+    }
+
+    private Dict getDictByDictCode(String dictCode) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_code",dictCode);
+        Dict codeDict = baseMapper.selectOne(wrapper);
+        return codeDict;
     }
 
     @Override
