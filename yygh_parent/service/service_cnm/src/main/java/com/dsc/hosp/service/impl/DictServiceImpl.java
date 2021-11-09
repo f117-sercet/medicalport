@@ -144,8 +144,17 @@ public class DictServiceImpl extends ServiceImpl<DictMapper,Dict> implements Dic
         return codeDict;
     }
 
+    /**
+     * 根据dictCode
+     * @param dictCode
+     * @return
+     */
     @Override
     public List<Dict> findByDictCode(String dictCode) {
-        return null;
+        // 根据dictCode获取对应id
+        Dict dict = this.getDictByDictCode(dictCode);
+        //根据id获取子节点
+        List<Dict> chlidData = this.findChildData(dict.getId());
+        return chlidData;
     }
 }
